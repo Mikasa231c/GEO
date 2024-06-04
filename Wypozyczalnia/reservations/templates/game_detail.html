@@ -1,0 +1,22 @@
+<!-- przycisk do przejscia na strone glowna -->
+<button>
+    <!-- stworzenie przejscia na endpoint o nazwa questions -->
+    <a href="{% url 'game-list' %} ">Back</a>
+</button>
+<!-- najwiekszy mozliwy naglowek o tresci QuestionDetail -->
+<h1>Game Detail</h1>
+<!-- django wstrzykuje do tej templatki obiekt "object" ktory jest pytaniem z bazy -->
+<ul>
+    <li>{{ object.id }}</li>
+    <!-- wyswietl question_text pytania -->
+    <li>{{ object.games }}</li>
+    <li>{{ object.games_type }}</li>
+    <!-- wyswietl was_published_recently pytania -->
+    <li>{{ object.PS4 }}</li>
+    <li>{{ object.PS5 }}</li>
+    <li>{{ object.PC }}</li>
+    <li>{{ object.Multiplayer_mode }}</li>
+    <li>{{ object.price_per_hour }} PLN</li>
+
+</ul>
+<button><a href="{% url 'game-confirm-reservation' object.id %}">Reserve</a></button>

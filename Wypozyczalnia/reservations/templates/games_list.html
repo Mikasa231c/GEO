@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Games</th>
+        <th>Games type</th>
+        <th>PS4</th>
+        <th>PS5</th>
+        <th>PC </th>
+        <th>Multiplayer mode</th>
+        <th>Price per Hour</th>
+    </tr>
+    {% for object in object_list %}
+    <tr>
+        <!-- Display Objects -->
+        <td>{{ object.id }}</td>
+        <td>{{ object.games }}</td>
+        <td>{{ object.games_type }}</td>
+        <td>{{ object.PS4 }}</td>
+        <td>{{ object.PS5 }}</td>
+        <td>{{ object.PC }}</td>
+        <td>{{ object.Multiplayer_mode }}</td>
+        <td>{{ object.price_per_hour }}</td>
+        <td><a href="{% url 'game-detail' object.id %}"><button>Detail</button></a></td>
+    </tr>
+    {% endfor %}
+<table>
