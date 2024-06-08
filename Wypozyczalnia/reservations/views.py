@@ -23,10 +23,12 @@ def confirm_reservation(request, game_id):
     if request.method == "POST":
         form = ConfirmReservationForm(request.POST)
         if form.is_valid():
-            klient, created = Game.objects.get_or_create(mail=form.cleaned_data["mail"],
+            klient, created = Klient.objects.get_or_create(mail=form.cleaned_data["mail"],
                                                            defaults={"phone": form.cleaned_data["phone"],
                                                                      "birth_day": form.cleaned_data["birth_day"]})
+            print("Mam klienta")
             game = get_object_or_404(Game, id=game_id)
+            print("mam gre")
             if not game.reservations.exists():
                 rezerwacja = Rezerwacja.objects.create(klient=klient, game=game)
                 print(f"Stworzono rezerwacje {rezerwacja}")
@@ -34,6 +36,7 @@ def confirm_reservation(request, game_id):
             else:
                 form = ConfirmReservationForm()
                 message = "Ta gra jest juz zarezerwowana"
+                print(message)
     else:
         form = ConfirmReservationForm()
 
